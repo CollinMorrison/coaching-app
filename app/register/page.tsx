@@ -16,7 +16,7 @@ export default function Home() {
     return (
         <>
             <div className="flex items-center justify-center h-screen">
-                <div className="bg-slate-500 shadow-xl w-auto pr-10 pl-10 h-1/2 rounded-xl flex flex-col justify-center items-center relative">
+                <div className="bg-slate-600 shadow-xl w-auto pr-10 pl-10 h-1/2 rounded-xl flex flex-col justify-center items-center relative">
                     <h1 className="absolute top-0 mt-10 text-3xl">Create Account</h1>
                     <div className="flex items-center">
                         <h3>Username</h3>
