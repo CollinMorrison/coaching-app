@@ -1,12 +1,21 @@
+"use client"
+
+import { Button, Input, Link } from "@nextui-org/react";
+import { useState } from "react";
 
 
-export default async function Home() {
+export default function Home() {
+    const [username, setUsername] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
 
+    const createAccount = async () => {
+
+    }
 
 
     return (
         <>
-        <div>Hello World</div>
+            <Link href="/register">Register</Link>
         </>
     )
 }
