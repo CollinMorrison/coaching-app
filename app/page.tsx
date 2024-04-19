@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { Button, Input, Link } from "@nextui-org/react";
 import { useState } from "react";
@@ -15,7 +15,7 @@ export default function Home() {
 
     return (
         <>
-            <Link href="/register">Register</Link>
+            <Link href="/register" className="text-white">Register</Link>
         </>
     )
 }
