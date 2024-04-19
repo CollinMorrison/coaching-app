@@ -11,14 +11,14 @@ export default function Home() {
     const [email, setEmail] = useState<string>('')
     const [athleteOrCoach, setAthleteOrCoach] = useState<string>('')
 
-    // const submitAccount = async () => {
-    //     console.log(email, password, athleteOrCoach)
-    //     try {
-    //         await createAccount(email, password, athleteOrCoach)
-    //     } catch(e) {
-    //         console.error(e)
-    //     }
-    // }
+    const submitAccount = () => {
+        console.log(email, password, athleteOrCoach)
+        try {
+            createAccount(email, password, athleteOrCoach)
+        } catch(e) {
+            console.error(e)
+        }
+    }
 
 
     return (
@@ -37,6 +37,12 @@ export default function Home() {
                     <div className="flex items-center">
                         <h3>Password</h3>
                         <input className="border rounded-lg m-5 text-black" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        
+                    </div>
+                    <div className="flex items-center">
+                        {password.length < 6 && 
+                            <p className="text-xs text-red-400 ml-20">Password must have 6 or more characters</p>
+                        }
                     </div>
                     <div className="flex flex-row mb-20">
                         <div className="flex items-center">
@@ -48,7 +54,7 @@ export default function Home() {
                             <input type="radio" name="athleteOrCoach" value="coach" className="border rounded-lg m-5 text-black" onChange={(e) => setAthleteOrCoach(e.target.value)}/>
                         </div>
                     </div>
-                    <Button className="absolute bottom-1 right-2 m-3 p-2 border rounded-xl" onClick={() => createAccount(email, password, athleteOrCoach)}>Submit</Button>
+                    <Button className="absolute bottom-1 right-2 m-3 p-2 border rounded-xl" onClick={() => submitAccount()}>Submit</Button>
                 </div>
             </div>
         </>
