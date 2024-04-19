@@ -54,13 +54,13 @@ export default async function GarminIntegration() {
       <div className="flex flex-wrap">
         {names.map((name) => {
           return (
-            <div>
+            <div key={name}>
               <div>
                 {name}
               </div>
             {nameActivitiesMap.get(name)!.map((activity) => {
               return (
-                <div className="w-1/4 bg-gray-400 m-4 border rounded-md">
+                <div className="w-1/4 bg-gray-400 m-4 border rounded-md" key={activity.activityId}>
                   <Card>
                     <CardBody>
                       {activity.activityType.typeKey}

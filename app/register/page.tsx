@@ -34,11 +34,11 @@ export default function Home() {
                     </div>
                     <div className="flex flex-row mb-20">
                         <div className="flex items-center">
-                            <h3>I'm an athlete</h3>
+                            <h3>I&#39;m an athlete</h3>
                             <input type="radio" name="athleteOrCoach" value="athlete" className="border rounded-lg m-5 text-black" onChange={(e) => setAthleteOrCoach(e.target.value)}/>
                         </div>
                         <div className="flex items-center">
-                            <h3>I'm a coach</h3>
+                            <h3>I&#39;m a coach</h3>
                             <input type="radio" name="athleteOrCoach" value="coach" className="border rounded-lg m-5 text-black" onChange={(e) => setAthleteOrCoach(e.target.value)}/>
                         </div>
                     </div>
