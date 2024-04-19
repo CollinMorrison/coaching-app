@@ -3,6 +3,7 @@
 import { Button, Input } from "@nextui-org/react";
 import { useState } from "react";
 import { createAccount } from "@/utils/Supabase/supabaseAuth";
+import { ToastContainer, toast } from "react-toastify";
 
 
 export default function Home() {
@@ -12,11 +13,13 @@ export default function Home() {
     const [athleteOrCoach, setAthleteOrCoach] = useState<string>('')
 
     const submitAccount = () => {
-        console.log(email, password, athleteOrCoach)
-        try {
-            createAccount(email, password, athleteOrCoach)
-        } catch(e) {
-            console.error(e)
+        if (password.length < 6) toast.error("You can read right?")
+        else {
+            try {
+                createAccount(email, password, athleteOrCoach)
+            } catch(e) {
+                console.error(e)
+            }
         }
     }
 
