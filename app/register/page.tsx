@@ -2,17 +2,23 @@
 
 import { Button, Input } from "@nextui-org/react";
 import { useState } from "react";
+import { createAccount } from "@/utils/Supabase/supabaseAuth";
 
 
 export default function Home() {
-    const [username, setUsername] = useState<string>('')
+    // const [username, setUsername] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [athleteOrCoach, setAthleteOrCoach] = useState<string>('')
 
-    const createAccount = async () => {
-
-    }
+    // const submitAccount = async () => {
+    //     console.log(email, password, athleteOrCoach)
+    //     try {
+    //         await createAccount(email, password, athleteOrCoach)
+    //     } catch(e) {
+    //         console.error(e)
+    //     }
+    // }
 
 
     return (
@@ -24,10 +30,10 @@ export default function Home() {
                         <h3>Email</h3>
                         <input className="border rounded-lg m-5 text-black" value={email} type="email" onChange={(e) => setEmail(e.target.value)}/>
                     </div>
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                         <h3>Username</h3>
                         <input className="border rounded-lg m-5 text-black" value={username} onChange={(e) => setUsername(e.target.value)}/>
-                    </div>
+                    </div> */}
                     <div className="flex items-center">
                         <h3>Password</h3>
                         <input className="border rounded-lg m-5 text-black" value={password} onChange={(e) => setPassword(e.target.value)}/>
@@ -42,7 +48,7 @@ export default function Home() {
                             <input type="radio" name="athleteOrCoach" value="coach" className="border rounded-lg m-5 text-black" onChange={(e) => setAthleteOrCoach(e.target.value)}/>
                         </div>
                     </div>
-                    <Button className="absolute bottom-1 right-2 m-3 p-2 border rounded-xl" onClick={() => createAccount()}>Submit</Button>
+                    <Button className="absolute bottom-1 right-2 m-3 p-2 border rounded-xl" onClick={() => createAccount(email, password, athleteOrCoach)}>Submit</Button>
                 </div>
             </div>
         </>
