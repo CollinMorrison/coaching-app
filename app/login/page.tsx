@@ -1,8 +1,8 @@
 'use client'
 
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input, Link } from "@nextui-org/react";
 import { useState } from "react";
-import { createAccount } from "@/utils/Supabase/supabaseAuth";
+import { createAccount, login } from "@/utils/Supabase/supabaseAuth";
 import { toast } from "react-toastify";
 
 
@@ -12,14 +12,13 @@ export default function Home() {
     const [email, setEmail] = useState<string>('')
     const [athleteOrCoach, setAthleteOrCoach] = useState<string>('')
 
-    const submitAccount = () => {
-        if (password.length <= 6) toast.error("I swear you know how to read...")
-        else {
-            try {
-                createAccount(email, password, athleteOrCoach)
-            } catch(e) {
-                console.error(e)
-            }
+    const submitLogin = () => {
+        try {
+            login(email, password)
+            toast.success("Logged in!")
+        } catch(e) {
+            toast.error("Invalid email or password")
+            console.error(e)
         }
     }
 
@@ -28,7 +27,7 @@ export default function Home() {
         <>
             <div className="flex items-center justify-center h-screen">
                 <div className="bg-slate-600 shadow-xl w-auto pr-10 pl-10 h-auto rounded-xl flex flex-col justify-center items-center relative">
-                    <h1 className="mt-10 mb-10 text-3xl">Create Account</h1>
+                    <h1 className="mt-10 mb-10 text-3xl">Login</h1>
                     <div className="flex items-center">
                         <h3>Email</h3>
                         <input className="border rounded-lg m-5 text-black" value={email} type="email" onChange={(e) => setEmail(e.target.value)}/>
@@ -47,7 +46,11 @@ export default function Home() {
                             <p className="text-xs text-red-400 ml-20">Password must have 6 or more characters</p>
                         }
                     </div>
-                    <Button className="absolute bottom-1 right-2 m-3 p-2 border rounded-xl" onClick={() => submitAccount()}>Submit</Button>
+                    <div className="mt-20">
+                        <p className="absolute bottom-1 left-2 m-3 p-2">Don't have an account?</p>
+                        <Link className="text-white absolute bottom-1 right-25 m-3 p-2 border rounded-xl w-auto" href="/register">Sign Up</Link>
+                    </div>
+                    <Button className="text-white absolute bottom-1 right-2 m-3 p-2 border rounded-xl w-auto" onClick={() => submitLogin()}>Submit</Button>
                 </div>
             </div>
         </>

@@ -27,3 +27,19 @@ export async function createAccount(email: string, password: string, athleteOrCo
         console.error(e)
     }
 }
+
+
+export async function login(email: string, password: string) {
+    const supabase = CreateSupabaseClient()
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        })
+        if (error) {
+            throw error
+        }
+    } catch (e) {
+        console.error(e)
+    }
+}

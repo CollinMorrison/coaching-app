@@ -17,6 +17,10 @@ export default function Home() {
         else {
             try {
                 createAccount(email, password, athleteOrCoach)
+                setPassword('')
+                setEmail('')
+                setAthleteOrCoach('')
+                toast.success("Account created!")
             } catch(e) {
                 console.error(e)
             }
@@ -50,11 +54,11 @@ export default function Home() {
                     <div className="flex flex-row mb-20 text-white">
                         <div className="flex items-center">
                             <h3>I&#39;m an athlete</h3>
-                            <input type="radio" name="athleteOrCoach" value="athlete" className="border rounded-lg m-5 text-black" onChange={(e) => setAthleteOrCoach(e.target.value)}/>
+                            <input type="radio" name="athleteOrCoach" value="athlete" checked={athleteOrCoach === "athlete"} className="m-5 text-black w-5 h-5" onChange={(e) => setAthleteOrCoach(e.target.value)}/>
                         </div>
                         <div className="flex items-center">
                             <h3>I&#39;m a coach</h3>
-                            <input type="radio" name="athleteOrCoach" value="coach" className="border rounded-lg m-5 text-black" onChange={(e) => setAthleteOrCoach(e.target.value)}/>
+                            <input type="radio" name="athleteOrCoach" value="coach" checked={athleteOrCoach === "coach"} className="m-5 text-black w-5 h-5" onChange={(e) => setAthleteOrCoach(e.target.value)}/>
                         </div>
                     </div>
                     <Button className="absolute bottom-1 right-2 m-3 p-2 border rounded-xl text-white" onClick={() => submitAccount()}>Submit</Button>
