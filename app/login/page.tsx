@@ -15,7 +15,7 @@ export default function Home() {
     const submitLogin = () => {
         try {
             login(email, password)
-            toast.success("Logged in!")
+            // toast.success("Logged in!")
         } catch(e) {
             toast.error("Invalid email or password")
             console.error(e)
@@ -47,7 +47,7 @@ export default function Home() {
                         }
                     </div>
                     <div className="mt-20">
-                        <p className="absolute bottom-1 left-2 m-3 p-2">Don't have an account?</p>
+                        <p className="absolute bottom-1 left-2 m-3 p-2">Don&#39;t have an account?</p>
                         <Link className="text-white absolute bottom-1 right-25 m-3 p-2 border rounded-xl w-auto" href="/register">Sign Up</Link>
                     </div>
                     <Button className="text-white absolute bottom-1 right-2 m-3 p-2 border rounded-xl w-auto" onClick={() => submitLogin()}>Submit</Button>
