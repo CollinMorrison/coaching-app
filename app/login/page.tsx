@@ -2,7 +2,7 @@
 
 import { Button, Input, Link } from "@nextui-org/react";
 import { useState } from "react";
-import { createAccount, login } from "@/utils/Supabase/supabaseAuth";
+import { createAccount, login } from "@/utils/supabase/supabaseAuth";
 import { toast } from "react-toastify";
 
 
