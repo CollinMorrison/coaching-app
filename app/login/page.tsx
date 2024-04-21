@@ -1,6 +1,6 @@
 'use client'
 
-import { login } from "@/utils/supabase/supabaseAuth";
+import { login } from "@/utils/Supabase/supabaseAuth";
 import { Button, Input, Link } from "@nextui-org/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
