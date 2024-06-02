@@ -2,7 +2,7 @@
 
 import { login } from "@/utils/Supabase/supabaseAuth";
 import { Button, Input, Link } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { redirect, useRouter } from 'next/navigation'
 import getUserSession from "@/utils/Supabase/getUserSession";
@@ -15,9 +15,11 @@ export default function LoginForm(user: any) {
     const [email, setEmail] = useState<string>('')
     const [athleteOrCoach, setAthleteOrCoach] = useState<string>('')
 
-    if (user) {
-        router.push('/athleteHome');
-      }
+    useEffect(() => {
+        if (user) {
+            router.push('/athleteHome');
+        }
+    }, [user, router]);
 
 
     const submitLogin = async () => {
