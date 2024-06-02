@@ -1,6 +1,6 @@
 'use server'
 
-import { createClient } from '@/utils/Supabase/supabaseServer'
+import { createSupabaseServerClient } from '@/utils/Supabase/supabaseServer'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
@@ -14,7 +14,7 @@ import { redirect } from 'next/navigation'
 
 export async function createAccount(email: string, password: string, athleteOrCoach: string) {
 
-    const supabase = createClient()
+    const supabase = await createSupabaseServerClient()
     // try/catch block is in the client function because redirect doesn't work in try/catch blocks due to a bug
     const { data, error } = await supabase.auth.signUp({
         email: email,
@@ -29,16 +29,17 @@ export async function createAccount(email: string, password: string, athleteOrCo
 
 
 export async function login(email: string, password: string) {
-    // try/catch block is in the client function because redirect doesn't work in try/catch blocks due to a bug
-    const supabase = createClient()
+    // try/catch block is in the client function because redirect doesn't work in try/catch blocks due to a bug in Next
+    console.log("in login function (supabaseAuth.ts)")
+    const supabase = await createSupabaseServerClient()
     const { data, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password
     })
     if (error) {
+        console.log("GOT AN ERROR")
         throw error
     }
-    console.log("logged in")
-    revalidatePath('/', 'layout')
-    redirect('/athleteHome')
+    
+    return JSON.stringify(data)
 }

@@ -12,16 +12,17 @@ export default function Home() {
     const [email, setEmail] = useState<string>('')
     const [athleteOrCoach, setAthleteOrCoach] = useState<string>('')
 
-    const submitAccount = () => {
+    const submitAccount = async () => {
         if (password.length < 6) toast.error("You can read right?")
         else {
             try {
-                createAccount(email, password, athleteOrCoach)
+                await createAccount(email, password, athleteOrCoach)
                 setPassword('')
                 setEmail('')
                 setAthleteOrCoach('')
                 toast.success("Account created!")
             } catch(e) {
+                toast.error("Error creating account")
                 console.error(e)
             }
         }
