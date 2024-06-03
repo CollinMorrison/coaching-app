@@ -6,6 +6,7 @@ import { Button, Input, Link } from "@nextui-org/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import LoginForm from "./login/LoginForm";
+import Navbar from "@/components/navbar-landing";
 
 
 export default function Home() {
@@ -23,13 +24,8 @@ export default function Home() {
 
     return (
         <>
-            <div className="w-full h-16 shadow-lg">
-                <div className="h-full mr-10 ml-10 flex justify-end items-center">
-                    <Link href="/login" className="text-white mr-10">Login</Link>
-                    <Link href="/register" className="text-white">Register</Link>
-                </div>
-            </div>
-            <div className="flex flex-col justify-center">
+            <Navbar />
+            <div className="flex flex-col justify-center items-center">
                 <h1 className="text-3xl text-white m-20">Welcome to Coachify!</h1>
                 <LoginForm />
             </div>

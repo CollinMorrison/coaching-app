@@ -1,5 +1,6 @@
 'use client'
 
+import Navbar from "@/components/navbar-landing";
 import { createAccount } from "@/utils/Supabase/supabaseAuth";
 import { Button, Input } from "@nextui-org/react";
 import { useState } from "react";
@@ -31,6 +32,7 @@ export default function Home() {
 
     return (
         <>
+            <Navbar/>
             <div className="flex items-center justify-center h-screen">
                 <div className="bg-slate-600 shadow-xl w-auto pr-10 pl-10 h-auto rounded-xl flex flex-col justify-center items-center relative">
                     <h1 className="mt-10 mb-10 text-3xl text-white">Create Account</h1>

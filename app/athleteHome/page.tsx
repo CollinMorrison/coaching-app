@@ -1,6 +1,7 @@
 import getUserSession from "@/utils/Supabase/getUserSession";
 import { redirect, useRouter } from "next/navigation";
 import Dashboard from "./Dashboard";
+import NavbarAthlete from "@/components/navbar-athlete";
 
 
 export default async function AthleteHome() {
@@ -14,6 +15,7 @@ export default async function AthleteHome() {
 
   return (
       <>
+          <NavbarAthlete/>
           <Dashboard/>
       </>
   )

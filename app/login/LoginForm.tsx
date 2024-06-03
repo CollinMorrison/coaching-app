@@ -37,7 +37,7 @@ export default function LoginForm() {
 
     return (
         <>
-            <div className="flex items-center justify-center h-screen">
+            <div className="flex items-center justify-center h-full">
                 <div className="bg-slate-600 shadow-xl w-auto pr-10 pl-10 h-auto rounded-xl flex flex-col justify-center items-center relative">
                     <h1 className="mt-10 mb-10 text-3xl">Login</h1>
                     <div className="flex items-center">
