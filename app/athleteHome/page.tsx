@@ -1,21 +1,22 @@
 import getUserSession from "@/utils/Supabase/getUserSession";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import Dashboard from "./Dashboard";
 
 
-export default async function Dashboard() {
-    const {
-        data: { user },
-      } = await getUserSession();
-    
-      if (!user) {
-        return redirect('/login');
-      }
+export default async function AthleteHome() {
+  const {
+      data: { user },
+    } = await getUserSession();
+    // console.log(user)
+    if (!user) {
+        redirect('/login');
+    }
 
-    return (
-        <>
-           Athlete Dashboard
-        </>
-    )
+  return (
+      <>
+          <Dashboard/>
+      </>
+  )
 
 
 }

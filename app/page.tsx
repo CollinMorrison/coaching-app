@@ -5,20 +5,21 @@ import { login } from "@/utils/Supabase/supabaseAuth";
 import { Button, Input, Link } from "@nextui-org/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import LoginForm from "./login/LoginForm";
 
 
 export default function Home() {
-    const [password, setPassword] = useState<string>('')
-    const [email, setEmail] = useState<string>('')
-    const [athleteOrCoach, setAthleteOrCoach] = useState<string>('')
+    // const [password, setPassword] = useState<string>('')
+    // const [email, setEmail] = useState<string>('')
+    // const [athleteOrCoach, setAthleteOrCoach] = useState<string>('')
 
-    const submitLogin = async () => {
-        try {
-            await login(email, password)
-        } catch(e) {
-            console.error(e)
-        }
-    }
+    // const submitLogin = async () => {
+    //     try {
+    //         await login(email, password)
+    //     } catch(e) {
+    //         console.error(e)
+    //     }
+    // }
 
     return (
         <>
@@ -28,7 +29,11 @@ export default function Home() {
                     <Link href="/register" className="text-white">Register</Link>
                 </div>
             </div>
-            <div className="flex flex-col justify-center items-center h-auto">
+            <div className="flex flex-col justify-center">
+                <h1 className="text-3xl text-white m-20">Welcome to Coachify!</h1>
+                <LoginForm />
+            </div>
+            {/* <div className="flex flex-col justify-center items-center h-auto">
                 <h1 className="text-3xl text-white m-20">Welcome to Coachify!</h1>
                 <div className="flex items-center justify-center h-auto">
                 <div className="bg-slate-600 shadow-xl w-auto pr-10 pl-10 h-auto rounded-xl flex flex-col justify-center items-center relative">
@@ -37,10 +42,6 @@ export default function Home() {
                         <h3>Email</h3>
                         <input className="border rounded-lg m-5 text-black" value={email} type="email" onChange={(e) => setEmail(e.target.value)}/>
                     </div>
-                    {/* <div className="flex items-center">
-                        <h3>Username</h3>
-                        <input className="border rounded-lg m-5 text-black" value={username} onChange={(e) => setUsername(e.target.value)}/>
-                    </div> */}
                     <div className="flex items-center">
                         <h3>Password</h3>
                         <input className="border rounded-lg m-5 text-black" value={password} onChange={(e) => setPassword(e.target.value)}/>
@@ -58,7 +59,7 @@ export default function Home() {
                     <Button className="text-white absolute bottom-1 right-2 m-3 p-2 border rounded-xl w-auto" onClick={() => submitLogin()}>Submit</Button>
                 </div>
             </div>
-            </div>
+            </div> */}
         </>
     )
 }

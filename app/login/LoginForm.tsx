@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { redirect, useRouter } from 'next/navigation'
 import getUserSession from "@/utils/Supabase/getUserSession";
 
-export default function LoginForm(user: any) {
+export default function LoginForm() {
 
     const router = useRouter()
     // const [username, setUsername] = useState<string>('')
@@ -15,11 +15,12 @@ export default function LoginForm(user: any) {
     const [email, setEmail] = useState<string>('')
     const [athleteOrCoach, setAthleteOrCoach] = useState<string>('')
 
-    useEffect(() => {
-        if (user) {
-            router.push('/athleteHome');
-        }
-    }, [user, router]);
+    // useEffect(() => {
+    //     console.log(userObject)
+    //     if (userObject.user) {
+    //         router.push('/athleteHome');
+    //     }
+    // });
 
 
     const submitLogin = async () => {
