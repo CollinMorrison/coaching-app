@@ -37,9 +37,17 @@ export async function login(email: string, password: string) {
         password: password
     })
     if (error) {
-        console.log("GOT AN ERROR")
         throw error
     }
     
     return JSON.stringify(data)
+}
+
+export async function signOut() {
+    const supabase = await createSupabaseServerClient()
+    const { error } = await supabase.auth.signOut()
+    if (error) {
+        throw error
+    }
+    redirect('/')
 }
