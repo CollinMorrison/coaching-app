@@ -1,7 +1,6 @@
 'use server'
 
 import { createSupabaseServerClient } from '@/utils/Supabase/supabaseServer'
-import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 // function CreateSupabaseClient() {
@@ -12,10 +11,9 @@ import { redirect } from 'next/navigation'
 // } 
 
 
-export async function createAccount(email: string, password: string, athleteOrCoach: string) {
+export async function createAccount(email: string, password: string, athleteOrCoach: string, firstName: string, lastName: string, gender: string, coachId: string) {
 
     const supabase = await createSupabaseServerClient()
-    // try/catch block is in the client function because redirect doesn't work in try/catch blocks due to a bug
     const { data, error } = await supabase.auth.signUp({
         email: email,
         password: password
@@ -23,8 +21,39 @@ export async function createAccount(email: string, password: string, athleteOrCo
     if (error) {
         throw error
     }
-    revalidatePath('/', 'layout')
-    redirect('/athleteHome')
+    if (!data.user) {
+        throw new Error("No user data returned from Supabase")
+    }
+    const userId = data.user.id
+
+    if (athleteOrCoach === "athlete") {
+        console.log("Inserting into athlete table with id: " + userId)
+        const { data: userData, error: userError } = await supabase.from("athlete").insert({
+            id: userId,
+            first_name: firstName,
+            last_name: lastName,
+            gender: gender,
+            coach_id: coachId || null,
+        })
+        if (userError) {
+            throw userError
+        }
+
+        await login(email, password)
+        redirect('/athleteHome')
+    } else {
+        const { data: userData, error: userError } = await supabase.from("coach").insert({
+            id: userId,
+            first_name: firstName,
+            last_name: lastName,
+            gender: gender
+        })
+        if (userError) {
+            throw userError
+        }
+        await login(email, password)
+        redirect('/coachHome')
+    }
 }
 
 

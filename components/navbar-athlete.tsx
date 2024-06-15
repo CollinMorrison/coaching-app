@@ -5,7 +5,7 @@ import Link from "next/link";
 import { signOut } from "@/utils/Supabase/supabaseAuth";
 
 
-export default function NavbarAthlete() {
+export default function NavbarAthlete(user: any) {
 
     const handleSignOut = () => {
         signOut()
@@ -14,8 +14,9 @@ export default function NavbarAthlete() {
 
     return (
         <>
-            <div className="w-full h-16 shadow-lg">
-                <div className="h-full mr-10 ml-10 flex justify-end items-center">
+            <div className="w-full h-16 shadow-lg flex flex-row">
+                <div className="mr-10 ml-10 flex items-center justify-start">Welcome!</div>
+                <div className="h-full w-full mr-10 ml-10 flex justify-end items-center">
                     <Button onClick={handleSignOut} className="text-white mr-10">Sign Out</Button>
                     <Link href="/register" className="text-white">Profile</Link>
                 </div>
