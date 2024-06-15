@@ -25,3 +25,25 @@ export async function createSupabaseServerClient() {
     }
   )
 }
+
+export async function getAthleteById(id: string) {
+  const supabase = await createSupabaseServerClient()
+  const {data, error} = await supabase.from('athlete').select('*').eq('id', id)
+  // console.log(id)
+  // console.log(data)
+
+  if (error) {
+    throw error
+  }
+  return data
+}
+
+export async function getCoachById(id: string) {
+  const supabase = await createSupabaseServerClient()
+  const {data, error} = await supabase.from('coach').select('*').eq('id', id)
+  if (error) {
+    throw error
+  }
+  return data
+}
+

@@ -27,7 +27,6 @@ export async function createAccount(email: string, password: string, athleteOrCo
     const userId = data.user.id
 
     if (athleteOrCoach === "athlete") {
-        console.log("Inserting into athlete table with id: " + userId)
         const { data: userData, error: userError } = await supabase.from("athlete").insert({
             id: userId,
             first_name: firstName,
