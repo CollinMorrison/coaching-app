@@ -47,3 +47,11 @@ export async function getCoachById(id: string) {
   return data
 }
 
+export async function getTrainingPlanByAthleteId(id: string) {
+  const supabase = await createSupabaseServerClient()
+  const {data, error} = await supabase.from('training_plan').select('*').eq('athlete_id', id)
+  if (error) {
+    throw error
+  }
+  return data
+}
