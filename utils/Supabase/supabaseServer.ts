@@ -55,3 +55,12 @@ export async function getTrainingPlanByAthleteId(id: string) {
   }
   return data
 }
+
+export async function getWorkoutByDateAndUserId(date: string, id: string) {
+  const supabase = await createSupabaseServerClient()
+  const {data, error} = await supabase.from('workout').select('*').eq('date', date).eq('athlete_id', id)
+  if (error) {
+    throw error
+  }
+  return data
+}

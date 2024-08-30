@@ -5,9 +5,14 @@ import { redirect, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 
-export default function Dashboard(trainingPlan: any) {
+export default function Dashboard(trainingPlan: any, todayWorkout: any) {
   const router = useRouter()
+  console.log("Today's workout:")
+  console.log(todayWorkout)
+  console.log("Training Plan:")
   console.log(trainingPlan)
+
+  // Not sure why the todayWorkout object is contained within the trainingPlan object???
 
 //   useEffect(() => {
 //     console.log(user)
@@ -25,7 +30,10 @@ export default function Dashboard(trainingPlan: any) {
             <div className="flex flex-row w-4/5 h-auto mt-10 justify-center">
               <div className="border border-white w-1/2 justify-center mr-1 ml-1 rounded-md">
                 <div className="border border-black m-5">
-                  Today's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach NotesToday's Workout w/ Coach Notes
+                  <p className="font-extrabold mb-5">Today's Workout</p>
+                  <p><span className="font-bold">Type: </span>{trainingPlan.todayWorkout.type}</p>
+                  <p><span className="font-bold">Duration: </span>{trainingPlan.todayWorkout.duration}</p>
+                  <p><span className="font-bold">Coach's Notes: </span>{trainingPlan.todayWorkout.coach_notes}</p>
                 </div>
               </div>
               <div className="border border-white w-1/2 ml-1 mr-1 rounded-md">
