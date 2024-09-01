@@ -34,12 +34,12 @@ export default function Dashboard(trainingPlan: any) {
             <div className="flex flex-row w-4/5 h-auto mt-10 justify-center">
               <div className="border border-white w-1/2 justify-center mr-1 ml-1 rounded-md">
                 <div className="m-5">
-                  <p className="font-extrabold mb-5">Today's Workout</p>
+                  <p className="font-extrabold mb-5">Today&lsquo;s Workout</p>
                   {trainingPlan.todayWorkout &&
                     <>
                       <p><span className="font-bold">Type: </span>{trainingPlan.todayWorkout.type ? trainingPlan.todayWorkout.type : "No workout type available"}</p>
                       <p><span className="font-bold">Duration: </span>{trainingPlan.todayWorkout.duration ? trainingPlan.todayWorkout.duration : "No workout duration available"}</p>
-                      <p><span className="font-bold">Coach's Notes: </span>{trainingPlan.todayWorkout.coach_notes ? trainingPlan.todayWorkout.coach_notes : "No coach notes available"}</p>
+                      <p><span className="font-bold">Coach&lsquo;s Notes: </span>{trainingPlan.todayWorkout.coach_notes ? trainingPlan.todayWorkout.coach_notes : "No coach notes available"}</p>
                     </>
                   }
                   {!trainingPlan.todayWorkout &&
