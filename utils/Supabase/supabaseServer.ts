@@ -64,3 +64,29 @@ export async function getWorkoutByDateAndUserId(date: string, id: string) {
   }
   return data
 }
+
+export async function getMetricsByDateAndUserId(date: string, id: string) {
+  const supabase = await createSupabaseServerClient()
+  const {data, error} = await supabase.from('metrics').select('*').eq('date', date).eq('athlete_id', id)
+  if (error) {
+    throw error
+  }
+  return data
+}
+
+export async function upsertMetrics(metrics: any) {
+  const supabase = await createSupabaseServerClient()
+  const {data, error} = await supabase
+  .from('metrics')
+  .upsert({
+    resting_heart_rate: metrics.resting_heart_rate,
+    hrv_value: metrics.hrv_value,
+    hrv_status: metrics.hrv_status,
+    sleep_score: metrics.sleep_score,
+  })
+  .select()
+  if (error) {
+    throw error
+  }
+  return data
+}
